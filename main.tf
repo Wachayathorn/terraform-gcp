@@ -53,8 +53,8 @@ resource "google_compute_firewall" "vpc-firewall" {
   }
 }
 
-resource "google_compute_instance" "master" {
-  name         = "master"
+resource "google_compute_instance" "master01" {
+  name         = "master01"
   machine_type = "e2-medium"
   zone         = "asia-southeast1-b"
 
@@ -77,8 +77,8 @@ resource "google_compute_instance" "master" {
   }
 }
 
-resource "google_compute_instance" "worker1" {
-  name         = "worker1"
+resource "google_compute_instance" "master02" {
+  name         = "master02"
   machine_type = "e2-medium"
   zone         = "asia-southeast1-b"
 
@@ -101,8 +101,8 @@ resource "google_compute_instance" "worker1" {
   }
 }
 
-resource "google_compute_instance" "worker2" {
-  name         = "worker2"
+resource "google_compute_instance" "worker" {
+  name         = "worker"
   machine_type = "e2-medium"
   zone         = "asia-southeast1-b"
 
@@ -124,6 +124,31 @@ resource "google_compute_instance" "worker2" {
     }
   }
 }
+
+
+# resource "google_compute_instance" "loadbalancer" {
+#   name         = "loadbalancer"
+#   machine_type = "e2-medium"
+#   zone         = "asia-southeast1-b"
+
+#   boot_disk {
+#     initialize_params {
+#       image = "ubuntu-os-cloud/ubuntu-1804-lts"
+#     }
+#   }
+
+#   metadata = {
+#     ssh-keys = "wachayathorn.singsena:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDMdv/VzXE2iHq8vsjG9Kn38gMA3la7s+gy8koDBVse9E/Y2a0/MR8sbfpGNDjbOrKxatzX7w1R6wOBGS3VUsSnhUMtGaihcau39JytVBWw8SoXdx71GyGDvQcf/jw34Udy5Euzog2mj4aYxliHrtYiJ+u7IvMHuriVSndrKEkvagmlsYw1mu/RXT4mnaW+67s12Zn9wOdz6JcDJorVXwMp7Qi1M+QwDTTWXg5ia2JZmQ7XK4LStIHE4V0obyRC0mDBA/X6JKc8W5AcmhRtEhkhM8LYEG6zGBq/Z1WS0HCADA9Z14lTlW+/flJqxy7ryCH4ug72Jg9t71jmWaGtc/6DeHpi8GSG9e64fM4KbYNHGSR+ycgtJAv4Kz2aOR6JWL+CTOLmrxZbKkA70PrnRQuTM96PBPlraZgBVND2K7FzIyQlmei71j9U7GF+qmPADE1EB75JizXFhseLUOgfofabKtSzh70xqmHTHhUPUHNQz2SrbUofiWBaU5aLfhEixrc= wachayathorn.singsena@gmail.com"
+#   }
+
+#   network_interface {
+#     network = "default"
+
+#     access_config {
+#       // Ephemeral IP
+#     }
+#   }
+# }
 
 
 
